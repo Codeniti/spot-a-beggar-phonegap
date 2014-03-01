@@ -1,70 +1,70 @@
-	<html>
-		
-		<head>
-		<title>SPOT A BEGGAR</title>
-		<style>
-		img{
-			wdth:20%;
-			height:20%;
-			margin:2px 2px 2px 2px;
-		}
-		</style>
-		</head>
-		
-		<body>
-			<div id = "beggar">
-			</div>
-		
+<html>
+	
+	<head>
+	<title>SPOT A BEGGAR</title>
+	<style>
+	img{
+		wdth:20%;
+		height:20%;
+		margin:2px 2px 2px 2px;
+	}
+	</style>
+	</head>
+	
+	<body>
+		<div id = "beggar">
+		</div>
+	
 
-	<script type="text/javascript">
-		if(navigator.geolocation) {
-			// This is the specific PhoneGap API call
-			navigator.geolocation.getCurrentPosition(function(p) {
-				// p is the object returned
-				var lat = p.coords.latitude;
-				var longi = p.coords.longitude;
-				<!-- htprequet(lat,longi); -->
-				if (window.XMLHttpRequest)
-				  {// code for IE7+, Firefox, Chrome, Opera, Safari
-					 xmlhttp=new XMLHttpRequest();
-				  }
-				  var url = "http://www.oth1.com/codeniti/getperson.php?lat="+lat+"&long="+longi;
-				
-					xmlhttp.open("GET",url,true);
-					xmlhttp.send();
-			var response = new Array();  
-				xmlhttp.onreadystatechange=function()
-				  {
-				  if (xmlhttp.readyState==4 && xmlhttp.status==200)
-					{
-						//alert(xmlhttp.responseText);
-	response=xmlhttp.responseText.split('<p>end</p>')[0];
-	alert(response);					 
-	response = JSON.parse(response);
-			var i = 0;
-				  var container = document.getElementById("beggar");
-	alert(response);
-					alert(response.ppl.length+" beggars found");
-					for(i=0;i<response.ppl.length;i++){
-						alert(i);
-						alert("adding"+response.ppl[i].pic);
-						container.innerHTML +='<img src  =  "'+response.ppl[i].pic+'"/>';
-					}
-				  }
-				  
-						
-					}
-			}, function(error){
-				alert("Failed to get GPS location");
-			});
-		} else {
-			alert("Failed to get GPS working");
+<script type="text/javascript">
+	if(navigator.geolocation) {
+	    // This is the specific PhoneGap API call
+	    navigator.geolocation.getCurrentPosition(function(p) {
+	        // p is the object returned
+	        var lat = p.coords.latitude;
+	        var longi = p.coords.longitude;
+	        <!-- htprequet(lat,longi); -->
+			if (window.XMLHttpRequest)
+			  {// code for IE7+, Firefox, Chrome, Opera, Safari
+				 xmlhttp=new XMLHttpRequest();
+			  }
+			  var url = "http://www.oth1.com/codeniti/getperson.php?lat="+lat+"&long="+longi;
+			
+				xmlhttp.open("GET",url,true);
+				xmlhttp.send();
+		var response = new Array();  
+			xmlhttp.onreadystatechange=function()
+			  {
+			  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+				{
+					//alert(xmlhttp.responseText);
+response=xmlhttp.responseText.split('<p>end</p>')[0];
+alert(response);					 
+response = JSON.parse(response);
+		var i = 0;
+			  var container = document.getElementById("beggar");
+alert(response);
+				alert(response.ppl.length+" beggars found");
+				for(i=0;i<response.ppl.length;i++){
+					alert(i);
+					alert("adding"+response.ppl[i].pic);
+					container.innerHTML +='<img src  =  "'+response.ppl[i].pic+'"/>';
+				}
+			  }
+			  
+					
+				}
+	    }, function(error){
+	        alert("Failed to get GPS location");
+	    });
+	} else {
+	    alert("Failed to get GPS working");
 
-		}
-		
-				
-		
-		</script>
+	}
+	
+			
+	
+	</script>
 
-	</body>
-	</html>
+</body>
+</html>

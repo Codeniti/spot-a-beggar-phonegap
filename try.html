@@ -1,0 +1,33 @@
+<!doctype html5>
+<html manifest="cache.manifest">
+ <meta name="viewport" content="width=device-width, user-scalable=no initial-scale=1">
+ <CENTER> 
+ 
+  <body>
+    <header class="banner"><h1>HTML5 Photos</h1></header>
+    <section class="entry">
+      <input type="file" accept="image/*;capture=camera"> 
+      <div class="latest">
+        <div class="menu">
+          <span class="command">save</span>
+        </div>
+        <img />
+      </div>
+    </section>
+    <section class="album">
+    <header><h1>Album</h1> <span class="empty command">clear</span></header>
+        <div class="photos">
+          <script type="x-template" id="photoTemplate">
+            <div class="photo">
+              <div class="menu">
+                <span><%= name %></span>
+                <span class="command open">open</span>
+              </div>
+              <img src="<%= url %>">
+            </div>
+          </script>
+        </div>
+    </section>
+  </body> 
+  </CENTER>
+</html> 

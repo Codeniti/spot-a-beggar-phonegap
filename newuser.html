@@ -1,0 +1,48 @@
+<html>
+	<script type="text/javascript">
+	if(navigator.geolocation) {
+	    // This is the specific PhoneGap API call
+	    navigator.geolocation.getCurrentPosition(function(p) {
+	        // p is the object returned
+	        var lat = p.coords.latitude;
+	        var longi = p.coords.longitude;
+	        htprequet(lat,longi);
+	    }, function(error){
+	        alert("Failed to get GPS location");
+	    });
+	} else {
+	    alert("Failed to get GPS working");
+
+	}
+
+
+	if (window.XMLHttpRequest)
+	  {// code for IE7+, Firefox, Chrome, Opera, Safari
+	 	 xmlhttp=new XMLHttpRequest();
+	  }
+	  var url = "http://oth1.com/codeniti/getperson.php?latitude="+lat+"&longitude="+longi;
+	
+		xmlhttp.open("GET",url,true);
+		xmlhttp.send();
+	var response = new Array();  
+	xmlhttp.onreadystatechange=function()
+	  {
+	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+	    {
+	   		 response = json_decode(xmlHttp.responseText);
+	    }
+	  }
+	  var i = 0;
+	  var container = document.getElementById('beggar');
+		for( i = 0 ; i < response.length ; i++){
+			container.innerHTML +='<img src  =  "'+response[i].pic+'"/>';
+
+		}
+	</script>
+	
+	<body>
+		<img src="" id = "beggar">
+
+	</body>
+</html>
+
